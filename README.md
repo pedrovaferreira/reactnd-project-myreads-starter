@@ -3,7 +3,7 @@
 This project is the result of the first challange of Udacity's React Nanodregree program.
 This repo contains a react app that allow users classify books to read, books that are been reading and also books that the user already read.
 
-## TL;DR
+## Run the project
 
 To run the project:
 
