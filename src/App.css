@@ -140,6 +140,18 @@ button:active {
 
 .book {
   width: 140px;
+  position: relative;
+}
+
+.book-shelf{
+  position: absolute;
+  top: 7px;
+  left: 0;
+  padding: 4px 8px 4px 4px;
+  background: #60ac5d;
+  color: white;
+  border-radius: 0 0 15px;
+  cursor: default;
 }
 
 .book-title,

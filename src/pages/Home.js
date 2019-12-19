@@ -43,11 +43,11 @@ class Home extends Component {
         }));
     }
     
-    handlerStatusUpdated = async (key, action) => {
+    handlerStatusUpdated = async (id, action) => {
         const { books } = this.state;
         
         if(action)
-            books[key].shelf = action;
+            books.find(b => b.id === id).shelf = action;
 
         this.setState(() => ({
             books
@@ -77,9 +77,9 @@ class Home extends Component {
                                         {books
                                             .filter(b => b.shelf === shelf.statusName)
                                             .map((b, key) => (
-                                            <Book key={key} 
+                                            <Book key={b.id} 
                                                 book={b}  
-                                                onStatusUpdated={(e) => this.handlerStatusUpdated(key, e)} 
+                                                onStatusUpdated={(e) => this.handlerStatusUpdated(b.id, e)} 
                                             />
                                         ))}
                                     </div>
