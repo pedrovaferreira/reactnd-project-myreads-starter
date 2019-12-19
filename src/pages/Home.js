@@ -42,15 +42,16 @@ class Home extends Component {
             loading: false
         }));
     }
+    
+    handlerStatusUpdated = async (key, action) => {
+        const { books } = this.state;
+        
+        if(action)
+            books[key].shelf = action;
 
-    handlerBookEvent = async (book, event) => {
-        event.preventDefault();
         this.setState(() => ({
-            loading: true
+            books
         }))
-
-        await BooksAPI.update(book, event.target.value);
-        this.refreshBooks();
     }
 
     render() {
@@ -59,7 +60,7 @@ class Home extends Component {
 
         return (
             <div className="list-books">
-                { loading && <div className="loading">
+                {loading && <div className="loading">
                         <div></div>
                 </div>}
                 <div className="list-books-title">
@@ -73,8 +74,13 @@ class Home extends Component {
                                 <h2 className="bookshelf-title">{shelf.title}</h2>
                                 <div className="bookshelf-books">
                                     <div className="books-grid">
-                                        {books.filter(b => b.shelf === shelf.statusName).map((b) => (
-                                            <Book key={b.id} book={b} onStatusChanged={this.handlerBookEvent} />
+                                        {books
+                                            .filter(b => b.shelf === shelf.statusName)
+                                            .map((b, key) => (
+                                            <Book key={key} 
+                                                book={b}  
+                                                onStatusUpdated={(e) => this.handlerStatusUpdated(key, e)} 
+                                            />
                                         ))}
                                     </div>
                                 </div>

@@ -177,6 +177,51 @@ button:active {
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
 }
 
+.book-shelf-changer.loading-icon{
+  background-image: url('./icons/loading.png');
+
+  stroke-dasharray: 187;
+  stroke-dashoffset: 0;
+  -webkit-transform-origin: center;
+          transform-origin: center;
+  -webkit-animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
+          animation: dash 1.4s ease-in-out infinite, colors 5.6s ease-in-out infinite;
+  box-shadow: none;
+}
+
+@-webkit-keyframes dash {
+  0% {
+    stroke-dashoffset: 187;
+  }
+  50% {
+    stroke-dashoffset: 46.75;
+    -webkit-transform: rotate(135deg);
+            transform: rotate(135deg);
+  }
+  100% {
+    stroke-dashoffset: 187;
+    -webkit-transform: rotate(450deg);
+            transform: rotate(450deg);
+  }
+}
+
+@keyframes dash {
+  0% {
+    stroke-dashoffset: 187;
+  }
+  50% {
+    stroke-dashoffset: 46.75;
+    -webkit-transform: rotate(135deg);
+            transform: rotate(135deg);
+  }
+  100% {
+    stroke-dashoffset: 187;
+    -webkit-transform: rotate(450deg);
+            transform: rotate(450deg);
+  }
+}
+
+
 .book-shelf-changer select {
   width: 100%;
   height: 100%;
@@ -195,4 +240,54 @@ button:active {
   padding: 20px 10px 0;
   text-align: center;
   font-size: 0.8em;
+}
+
+
+.loading{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 5px;
+  background-color: rgba(255, 255, 255, .3);
+  z-index: 10;
+}
+.loading div{
+  width: 0%;
+  height: 100%;
+  background-color: rgba(255, 0, 0, .6);
+  -webkit-animation: rotator 1s linear infinite;
+          animation: rotator 1s linear infinite;
+}
+
+
+@-webkit-keyframes rotator {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(270deg);
+            transform: rotate(270deg);
+  }
+}
+
+@keyframes rotator {
+  0% {
+    margin-left: 0%;
+  }
+  25%{
+    
+    margin-left: 25%;
+    width: 50%;
+  }
+  75%{
+    
+    margin-left: 75%;
+    width: 75%;
+  }
+
+  100% {
+    margin-left: 100%;
+    width: 0%;
+  }
 }
