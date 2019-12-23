@@ -50,7 +50,7 @@ class Search extends Component {
                                   ...b,
                                   shelf: myBooks.find(myBook => myBook.id === b.id) ? 
                                          myBooks.find(myBook => myBook.id === b.id).shelf : 
-                                         ''
+                                         'none'
                               })),
         notFound: false,
         loading: false

@@ -55,7 +55,7 @@ class Book extends Component {
                     <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url("${book.imageLinks ? book.imageLinks.thumbnail: ''}")` }}></div>
                     <div className={this.state.loading ? 'book-shelf-changer loading-icon' : 'book-shelf-changer'}>
                         <select onChange={this.handlerChange} value={book.shelf}>
-                            <option value="move">Move to...</option>
+                            <option value="move" disabled>Move to...</option>
                             <option value="currentlyReading">Currently Reading</option>
                             <option value="wantToRead">Want to Read</option>
                             <option value="read">Read</option>
@@ -63,7 +63,7 @@ class Book extends Component {
                         </select>
                     </div>
                 </div>
-                {book.shelf !== '' && <div className="book-shelf" title={lyrics[book.shelf]}>{lyrics[book.shelf].substring(0,1)}</div>}
+                {book.shelf !== 'none' && <div className="book-shelf" title={lyrics[book.shelf]}>{lyrics[book.shelf].substring(0,1)}</div>}
                 <div className="book-title">{book.title}</div>
                 <div className="book-authors">{book.authors ? book.authors.join(', ') : 'unknow'}</div>
             </div>
